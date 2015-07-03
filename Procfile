@@ -1,0 +1,2 @@
+web: wus
+worker: worker

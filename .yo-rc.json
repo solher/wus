@@ -1,0 +1,6 @@
+{
+  "generator-zest": {
+    "appPath": "github.com/solher/wus",
+    "appName": "wus"
+  }
+}
