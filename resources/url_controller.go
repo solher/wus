@@ -1,4 +1,5 @@
-package ressources
+// @SubApi URL management API [/urls]
+package resources
 
 import (
 	"encoding/json"
@@ -75,14 +76,14 @@ func (c *UrlCtrl) Create(w http.ResponseWriter, r *http.Request, _ map[string]st
 		}
 	}
 
-	lastRessource := interfaces.GetLastRessource(r)
+	lastResource := interfaces.GetLastResource(r)
 
 	if urls == nil {
-		url.SetRelatedID(lastRessource.IDKey, lastRessource.ID)
+		url.SetRelatedID(lastResource.IDKey, lastResource.ID)
 		url, err = c.interactor.CreateOne(url)
 	} else {
 		for i := range urls {
-			(&urls[i]).SetRelatedID(lastRessource.IDKey, lastRessource.ID)
+			(&urls[i]).SetRelatedID(lastResource.IDKey, lastResource.ID)
 		}
 		urls, err = c.interactor.Create(urls)
 	}
@@ -115,7 +116,7 @@ func (c *UrlCtrl) Find(w http.ResponseWriter, r *http.Request, _ map[string]stri
 		return
 	}
 
-	filter = interfaces.FilterIfLastRessource(r, filter)
+	filter = interfaces.FilterIfLastResource(r, filter)
 	filter = interfaces.FilterIfOwnerRelations(r, filter)
 	relations := interfaces.GetOwnerRelations(r)
 
@@ -131,6 +132,13 @@ func (c *UrlCtrl) Find(w http.ResponseWriter, r *http.Request, _ map[string]stri
 	c.render.JSON(w, http.StatusOK, urls)
 }
 
+// @Title FindByID
+// @Description Get URL by ID
+// @Accept  json
+// @Param   some_id     path    int     true        "Some ID"
+// @Success 200 {object} string
+// @Failure 400 {object} apierrors.APIError
+// @Router /urls/{some_id} [get]
 func (c *UrlCtrl) FindByID(w http.ResponseWriter, r *http.Request, params map[string]string) {
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
@@ -177,16 +185,16 @@ func (c *UrlCtrl) Upsert(w http.ResponseWriter, r *http.Request, _ map[string]st
 		}
 	}
 
-	lastRessource := interfaces.GetLastRessource(r)
+	lastResource := interfaces.GetLastResource(r)
 	filter := interfaces.FilterIfOwnerRelations(r, nil)
 	relations := interfaces.GetOwnerRelations(r)
 
 	if urls == nil {
-		url.SetRelatedID(lastRessource.IDKey, lastRessource.ID)
+		url.SetRelatedID(lastResource.IDKey, lastResource.ID)
 		url, err = c.interactor.UpsertOne(url, usecases.QueryContext{Filter: filter, OwnerRelations: relations})
 	} else {
 		for i := range urls {
-			(&urls[i]).SetRelatedID(lastRessource.IDKey, lastRessource.ID)
+			(&urls[i]).SetRelatedID(lastResource.IDKey, lastResource.ID)
 		}
 		urls, err = c.interactor.Upsert(urls, usecases.QueryContext{Filter: filter, OwnerRelations: relations})
 	}
@@ -233,11 +241,11 @@ func (c *UrlCtrl) UpdateByID(w http.ResponseWriter, r *http.Request, params map[
 		return
 	}
 
-	lastRessource := interfaces.GetLastRessource(r)
+	lastResource := interfaces.GetLastResource(r)
 	filter := interfaces.FilterIfOwnerRelations(r, nil)
 	relations := interfaces.GetOwnerRelations(r)
 
-	url.SetRelatedID(lastRessource.IDKey, lastRessource.ID)
+	url.SetRelatedID(lastResource.IDKey, lastResource.ID)
 	url, err = c.interactor.UpdateByID(id, url, usecases.QueryContext{Filter: filter, OwnerRelations: relations})
 
 	if err != nil {
@@ -261,7 +269,7 @@ func (c *UrlCtrl) DeleteAll(w http.ResponseWriter, r *http.Request, _ map[string
 		return
 	}
 
-	filter = interfaces.FilterIfLastRessource(r, filter)
+	filter = interfaces.FilterIfLastResource(r, filter)
 	filter = interfaces.FilterIfOwnerRelations(r, filter)
 	relations := interfaces.GetOwnerRelations(r)
 
@@ -325,7 +333,7 @@ func (c *UrlCtrl) Related(w http.ResponseWriter, r *http.Request, params map[str
 		return
 	}
 
-	context.Set(r, "lastRessource", &interfaces.Ressource{Name: related, IDKey: "urlID", ID: pk})
+	context.Set(r, "lastResource", &interfaces.Resource{Name: related, IDKey: "urlID", ID: pk})
 
 	handler(w, r, params)
 }
@@ -358,7 +366,7 @@ func (c *UrlCtrl) RelatedOne(w http.ResponseWriter, r *http.Request, params map[
 		return
 	}
 
-	context.Set(r, "lastRessource", &interfaces.Ressource{Name: related, IDKey: "urlID", ID: pk})
+	context.Set(r, "lastResource", &interfaces.Resource{Name: related, IDKey: "urlID", ID: pk})
 
 	handler(w, r, params)
 }

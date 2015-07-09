@@ -1,4 +1,4 @@
-package ressources
+package resources
 
 import "github.com/solher/zest/usecases"
 

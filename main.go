@@ -1,13 +1,17 @@
+// @APIVersion 1.0.0
+// @APITitle WUS
+// @APIDescription WID URL shortener
+
 package main
 
 import (
 	"runtime"
 
 	_ "github.com/solher/wus/domain"
-	_ "github.com/solher/wus/ressources"
+	_ "github.com/solher/wus/resources"
 	"github.com/solher/zest"
 	"github.com/solher/zest/domain"
-	"github.com/solher/zest/ressources"
+	"github.com/solher/zest/resources"
 	"github.com/solher/zest/usecases"
 )
 
@@ -16,11 +20,13 @@ func init() {
 }
 
 func main() {
-	App := zest.Classic()
-	App.AfterBuild = afterBuild
-	App.UserSeedDatabase = userSeedDatabase
+	app := zest.Classic()
+	app.Swagger.ResourceListingJSON = resourceListingJson
+	app.Swagger.APIDescriptionsJSON = apiDescriptionsJson
+	app.AfterBuild = afterBuild
+	app.UserSeedDatabase = userSeedDatabase
 
-	App.Run()
+	app.Run()
 }
 
 func afterBuild(z *zest.Zest) error {
@@ -37,7 +43,7 @@ func afterBuild(z *zest.Zest) error {
 	routes := d.RouteDir.Routes
 
 	for k, v := range routes {
-		if k.Ressource == "urls" && k.Method == "RedirectUrl" {
+		if k.Resource == "urls" && k.Method == "RedirectUrl" {
 			continue
 		}
 
@@ -50,7 +56,7 @@ func afterBuild(z *zest.Zest) error {
 
 func userSeedDatabase(z *zest.Zest) error {
 	type dependencies struct {
-		AccountGuestInter *ressources.AccountGuestInter
+		AccountGuestInter *resources.AccountGuestInter
 		PermissionInter   *usecases.PermissionInter
 	}
 
