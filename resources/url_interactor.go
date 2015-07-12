@@ -42,7 +42,7 @@ func PopulateUrlInter(urlInter *UrlInter, repo AbstractUrlRepo) {
 func (i *UrlInter) GetLongUrl(shortHandle string) (string, error) {
 	filter := &usecases.Filter{
 		Limit: 1,
-		Where: map[string]interface{}{"shortHandle": shortHandle},
+		Where: map[string]interface{}{"shortHandle": shortHandle, "enabled": true},
 	}
 
 	urls, err := i.repo.Find(usecases.QueryContext{Filter: filter})

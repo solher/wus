@@ -10,7 +10,7 @@
             <plist version="1.0">
                 <dict>
                     <key>NSPersistenceFrameworkVersion</key>
-                    <integer>625</integer>
+                    <integer>626</integer>
                     <key>NSStoreModelVersionHashes</key>
                     <dict>
                         <key>LMCookieJar</key>
@@ -85,7 +85,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">["{\\n  \\"email\\":\\"fabien.herfray@me.com\\",\\n  \\"password\\":\\"qwertyuiop\\"\\n}"]</attribute>
+        <attribute name="body" type="string">["{\\n  \\"email\\":\\"admin@wid.la\\",\\n  \\"password\\":\\"admin\\"\\n}"]</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">Signin</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z136"></relationship>
@@ -714,7 +714,7 @@
     </object>
     <object type="LMREQUEST" id="z169">
         <attribute name="uuid" type="string">CD1D151F-57C5-4AD3-893A-B26649A27242</attribute>
-        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/api\\/accounts\\/me\\/urls"]</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/api\\/accounts\\/me\\/urls\\/1"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>

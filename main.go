@@ -1,7 +1,6 @@
 // @APIVersion 1.0.0
 // @APITitle WUS
-// @APIDescription WID URL shortener
-
+// @APIDescription WID URL Shortener
 package main
 
 import (
@@ -44,6 +43,10 @@ func afterBuild(z *zest.Zest) error {
 
 	for k, v := range routes {
 		if k.Resource == "urls" && k.Method == "RedirectUrl" {
+			continue
+		}
+
+		if k.Resource == "static" {
 			continue
 		}
 

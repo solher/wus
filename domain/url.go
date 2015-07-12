@@ -14,7 +14,7 @@ func init() {
 
 type Url struct {
 	domain.GormModel
-	ShortHandle string         `json:"shortHandle"`
+	ShortHandle string         `json:"shortHandle" sql:"unique"`
 	LongUrl     string         `json:"longUrl"`
 	Notes       string         `json:"notes"`
 	Enabled     bool           `json:"enabled"`
