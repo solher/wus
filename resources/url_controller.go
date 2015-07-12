@@ -1,4 +1,4 @@
-// @SubApi URL management API [/urls]
+// @SubApi Url resource [/urls]
 package resources
 
 import (
@@ -48,6 +48,13 @@ func NewUrlCtrl(interactor AbstractUrlInter, render interfaces.AbstractRender, r
 	return controller
 }
 
+// @Title RedirectUrl
+// @Description Redirect a short Url to the original one
+// @Accept  json
+// @Param   shortHandle path string true "Shortened Url"
+// @Success 301 {object} error "Request was successful"
+// @Router /{shortHandle} [get]
+// @Resource urls
 func (c *UrlCtrl) RedirectUrl(w http.ResponseWriter, r *http.Request, params map[string]string) {
 	shortHandle := params["shortHandle"]
 
@@ -61,6 +68,12 @@ func (c *UrlCtrl) RedirectUrl(w http.ResponseWriter, r *http.Request, params map
 	c.render.JSON(w, http.StatusMovedPermanently, nil)
 }
 
+// @Title Create
+// @Description Create one or multiple Url instances
+// @Accept  json
+// @Param   Url body domain.Url true "Url instance(s) data"
+// @Success 201 {object} domain.Url "Request was successful"
+// @Router /urls [post]
 func (c *UrlCtrl) Create(w http.ResponseWriter, r *http.Request, _ map[string]string) {
 	url := &domain.Url{}
 	var urls []domain.Url
@@ -109,6 +122,12 @@ func (c *UrlCtrl) Create(w http.ResponseWriter, r *http.Request, _ map[string]st
 	}
 }
 
+// @Title Find
+// @Description Find all Url instances matched by filter
+// @Accept  json
+// @Param   filter query string false "JSON filter defining fields and includes"
+// @Success 200 {object} domain.Url "Request was successful"
+// @Router /urls [get]
 func (c *UrlCtrl) Find(w http.ResponseWriter, r *http.Request, _ map[string]string) {
 	filter, err := interfaces.GetQueryFilter(r)
 	if err != nil {
@@ -133,12 +152,12 @@ func (c *UrlCtrl) Find(w http.ResponseWriter, r *http.Request, _ map[string]stri
 }
 
 // @Title FindByID
-// @Description Get URL by ID
+// @Description Find a Url instance
 // @Accept  json
-// @Param   some_id     path    int     true        "Some ID"
-// @Success 200 {object} string
-// @Failure 400 {object} apierrors.APIError
-// @Router /urls/{some_id} [get]
+// @Param   id path int true "Url id"
+// @Param   filter query string false "JSON filter defining fields and includes"
+// @Success 200 {object} domain.Url "Request was successful"
+// @Router /urls/{id} [get]
 func (c *UrlCtrl) FindByID(w http.ResponseWriter, r *http.Request, params map[string]string) {
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
@@ -170,6 +189,12 @@ func (c *UrlCtrl) FindByID(w http.ResponseWriter, r *http.Request, params map[st
 	c.render.JSON(w, http.StatusOK, url)
 }
 
+// @Title Upsert
+// @Description Upsert one or multiple Url instances
+// @Accept  json
+// @Param   Url body domain.Url true "Url instance(s) data"
+// @Success 201 {object} domain.Url "Request was successful"
+// @Router /urls [put]
 func (c *UrlCtrl) Upsert(w http.ResponseWriter, r *http.Request, _ map[string]string) {
 	url := &domain.Url{}
 	var urls []domain.Url
@@ -226,6 +251,13 @@ func (c *UrlCtrl) Upsert(w http.ResponseWriter, r *http.Request, _ map[string]st
 	}
 }
 
+// @Title UpdateByID
+// @Description Update attributes of a Url instance
+// @Accept  json
+// @Param   id path int true "Url id"
+// @Param   Url body domain.Url true "Url instance data"
+// @Success 201 {object} domain.Url
+// @Router /urls/{id} [put]
 func (c *UrlCtrl) UpdateByID(w http.ResponseWriter, r *http.Request, params map[string]string) {
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
@@ -262,6 +294,12 @@ func (c *UrlCtrl) UpdateByID(w http.ResponseWriter, r *http.Request, params map[
 	c.render.JSON(w, http.StatusCreated, url)
 }
 
+// @Title DeleteAll
+// @Description Delete all Url instances matched by filter
+// @Accept  json
+// @Param   filter query string false "JSON filter defining fields and includes"
+// @Success 204 {object} error "Request was successful"
+// @Router /urls [delete]
 func (c *UrlCtrl) DeleteAll(w http.ResponseWriter, r *http.Request, _ map[string]string) {
 	filter, err := interfaces.GetQueryFilter(r)
 	if err != nil {
@@ -282,6 +320,12 @@ func (c *UrlCtrl) DeleteAll(w http.ResponseWriter, r *http.Request, _ map[string
 	c.render.JSON(w, http.StatusNoContent, nil)
 }
 
+// @Title DeleteByID
+// @Description Delete a Url instance
+// @Accept  json
+// @Param   id path int true "Url id"
+// @Success 204 {object} error "Request was successful"
+// @Router /urls/{id} [delete]
 func (c *UrlCtrl) DeleteByID(w http.ResponseWriter, r *http.Request, params map[string]string) {
 	id, err := strconv.Atoi(params["id"])
 	if err != nil {
@@ -306,7 +350,55 @@ func (c *UrlCtrl) DeleteByID(w http.ResponseWriter, r *http.Request, params map[
 	c.render.JSON(w, http.StatusNoContent, nil)
 }
 
-func (c *UrlCtrl) Related(w http.ResponseWriter, r *http.Request, params map[string]string) {
+// @Title CreateRelated
+// @Description Create one or multiple Url instances of a related resource
+// @Accept  json
+// @Param   pk path int true "Url id"
+// @Param   relatedResource path string true "Related resource name"
+// @Param   Url body domain.Url true "Url instance(s) data"
+// @Success 201 {object} domain.Url "Request was successful"
+// @Router /urls/{pk}/{relatedResource} [post]
+func (c *UrlCtrl) CreateRelated(w http.ResponseWriter, r *http.Request, params map[string]string) {
+	c.related(w, r, params)
+}
+
+// @Title FindRelated
+// @Description Find all Url instances  of a related resource matched by filter
+// @Accept  json
+// @Param   pk path int true "Url id"
+// @Param   relatedResource path string true "Related resource name"
+// @Param   filter query string false "JSON filter defining fields and includes"
+// @Success 200 {object} domain.Url "Request was successful"
+// @Router /urls/{pk}/{relatedResource} [get]
+func (c *UrlCtrl) FindRelated(w http.ResponseWriter, r *http.Request, params map[string]string) {
+	c.related(w, r, params)
+}
+
+// @Title UpsertRelated
+// @Description Upsert one or multiple Url instances of a related resource
+// @Accept  json
+// @Param   pk path int true "Url id"
+// @Param   relatedResource path string true "Related resource name"
+// @Param   Url body domain.Url true "Url instance(s) data"
+// @Success 201 {object} domain.Url "Request was successful"
+// @Router /urls/{pk}/{relatedResource} [put]
+func (c *UrlCtrl) UpsertRelated(w http.ResponseWriter, r *http.Request, params map[string]string) {
+	c.related(w, r, params)
+}
+
+// @Title DeleteAllRelated
+// @Description Delete all Url instances of a related resource matched by filter
+// @Accept  json
+// @Param   pk path int true "Url id"
+// @Param   relatedResource path string true "Related resource name"
+// @Param   filter query string false "JSON filter defining fields and includes"
+// @Success 204 {object} error "Request was successful"
+// @Router /urls/{pk}/{relatedResource} [delete]
+func (c *UrlCtrl) DeleteAllRelated(w http.ResponseWriter, r *http.Request, params map[string]string) {
+	c.related(w, r, params)
+}
+
+func (c *UrlCtrl) related(w http.ResponseWriter, r *http.Request, params map[string]string) {
 	pk, err := strconv.Atoi(params["pk"])
 	if err != nil {
 		c.render.JSONError(w, http.StatusBadRequest, apierrors.InvalidPathParams, err)
@@ -338,7 +430,45 @@ func (c *UrlCtrl) Related(w http.ResponseWriter, r *http.Request, params map[str
 	handler(w, r, params)
 }
 
-func (c *UrlCtrl) RelatedOne(w http.ResponseWriter, r *http.Request, params map[string]string) {
+// @Title FindByIDRelated
+// @Description Find a Url instance of a related resource
+// @Accept  json
+// @Param   pk path int true "Url id"
+// @Param   relatedResource path string true "Related resource name"
+// @Param   fk path int true "Related resource id"
+// @Param   filter query string false "JSON filter defining fields and includes"
+// @Success 200 {object} domain.Url "Request was successful"
+// @Router /urls/{pk}/{relatedResource}/{fk} [get]
+func (c *UrlCtrl) FindByIDRelated(w http.ResponseWriter, r *http.Request, params map[string]string) {
+	c.relatedOne(w, r, params)
+}
+
+// @Title UpdateByIDRelated
+// @Description Update attributes of a Url instance of a related resource
+// @Accept  json
+// @Param   pk path int true "Url id"
+// @Param   relatedResource path string true "Related resource name"
+// @Param   fk path int true "Related resource id"
+// @Param   Url body domain.Url true "Url instance data"
+// @Success 201 {object} domain.Url
+// @Router /urls/{pk}/{relatedResource}/{fk} [put]
+func (c *UrlCtrl) UpdateByIDRelated(w http.ResponseWriter, r *http.Request, params map[string]string) {
+	c.relatedOne(w, r, params)
+}
+
+// @Title DeleteByIDRelated
+// @Description Delete a Url instance of a related resource
+// @Accept  json
+// @Param   pk path int true "Url id"
+// @Param   relatedResource path string true "Related resource name"
+// @Param   fk path int true "Related resource id"
+// @Success 204 {object} error "Request was successful"
+// @Router /urls/{pk}/{relatedResource}/{fk} [delete]
+func (c *UrlCtrl) DeleteByIDRelated(w http.ResponseWriter, r *http.Request, params map[string]string) {
+	c.relatedOne(w, r, params)
+}
+
+func (c *UrlCtrl) relatedOne(w http.ResponseWriter, r *http.Request, params map[string]string) {
 	pk, err := strconv.Atoi(params["pk"])
 	if err != nil {
 		c.render.JSONError(w, http.StatusBadRequest, apierrors.InvalidPathParams, err)
