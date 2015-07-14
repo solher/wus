@@ -20,8 +20,7 @@ func init() {
 
 func main() {
 	app := zest.Classic()
-	app.Swagger.ResourceListingJSON = resourceListingJson
-	app.Swagger.APIDescriptionsJSON = apiDescriptionsJson
+	app.Swagger.Init("github.com/solher/wus")
 	app.AfterBuild = afterBuild
 	app.UserSeedDatabase = userSeedDatabase
 

@@ -1,0 +1,1009 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "{{.}}",
+    "resourcePath": "/sessions",
+    "apis": [
+        {
+            "path": "/sessions",
+            "description": "Create one or multiple Session instances",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "Create",
+                    "type": "",
+                    "items": {},
+                    "summary": "Create one or multiple Session instances",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "Session",
+                            "description": "Session instance(s) data",
+                            "dataType": "github.com.solher.zest.domain.Session",
+                            "type": "github.com.solher.zest.domain.Session",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "GET",
+                    "nickname": "Find",
+                    "type": "github.com.solher.zest.domain.Session",
+                    "items": {},
+                    "summary": "Find all Session instances matched by filter",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "description": "JSON filter defining fields and includes",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "PUT",
+                    "nickname": "Upsert",
+                    "type": "",
+                    "items": {},
+                    "summary": "Upsert one or multiple Session instances",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "Session",
+                            "description": "Session instance(s) data",
+                            "dataType": "github.com.solher.zest.domain.Session",
+                            "type": "github.com.solher.zest.domain.Session",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "DELETE",
+                    "nickname": "DeleteAll",
+                    "type": "",
+                    "items": {},
+                    "summary": "Delete all Session instances matched by filter",
+                    "parameters": [
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "description": "JSON filter defining fields and includes",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 204,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/sessions/{id}",
+            "description": "Find a Session instance",
+            "operations": [
+                {
+                    "httpMethod": "GET",
+                    "nickname": "FindByID",
+                    "type": "github.com.solher.zest.domain.Session",
+                    "items": {},
+                    "summary": "Find a Session instance",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "description": "JSON filter defining fields and includes",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "PUT",
+                    "nickname": "UpdateByID",
+                    "type": "",
+                    "items": {},
+                    "summary": "Update attributes of a Session instance",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "body",
+                            "name": "Session",
+                            "description": "Session instance data",
+                            "dataType": "github.com.solher.zest.domain.Session",
+                            "type": "github.com.solher.zest.domain.Session",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "DELETE",
+                    "nickname": "DeleteByID",
+                    "type": "",
+                    "items": {},
+                    "summary": "Delete a Session instance",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 204,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/sessions/{pk}/{relatedResource}",
+            "description": "Create one or multiple Session instances of a related resource",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "CreateRelated",
+                    "type": "",
+                    "items": {},
+                    "summary": "Create one or multiple Session instances of a related resource",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "relatedResource",
+                            "description": "Related resource name",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "body",
+                            "name": "Session",
+                            "description": "Session instance(s) data",
+                            "dataType": "github.com.solher.zest.domain.Session",
+                            "type": "github.com.solher.zest.domain.Session",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "GET",
+                    "nickname": "FindRelated",
+                    "type": "github.com.solher.zest.domain.Session",
+                    "items": {},
+                    "summary": "Find all Session instances  of a related resource matched by filter",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "relatedResource",
+                            "description": "Related resource name",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "description": "JSON filter defining fields and includes",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "PUT",
+                    "nickname": "UpsertRelated",
+                    "type": "",
+                    "items": {},
+                    "summary": "Upsert one or multiple Session instances of a related resource",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "relatedResource",
+                            "description": "Related resource name",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "body",
+                            "name": "Session",
+                            "description": "Session instance(s) data",
+                            "dataType": "github.com.solher.zest.domain.Session",
+                            "type": "github.com.solher.zest.domain.Session",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "DELETE",
+                    "nickname": "DeleteAllRelated",
+                    "type": "",
+                    "items": {},
+                    "summary": "Delete all Session instances of a related resource matched by filter",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "relatedResource",
+                            "description": "Related resource name",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "description": "JSON filter defining fields and includes",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 204,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/sessions/{pk}/{relatedResource}/{fk}",
+            "description": "Find a Session instance of a related resource",
+            "operations": [
+                {
+                    "httpMethod": "GET",
+                    "nickname": "FindByIDRelated",
+                    "type": "github.com.solher.zest.domain.Session",
+                    "items": {},
+                    "summary": "Find a Session instance of a related resource",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "relatedResource",
+                            "description": "Related resource name",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "fk",
+                            "description": "Related resource id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "query",
+                            "name": "filter",
+                            "description": "JSON filter defining fields and includes",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": false,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "PUT",
+                    "nickname": "UpdateByIDRelated",
+                    "type": "",
+                    "items": {},
+                    "summary": "Update attributes of a Session instance of a related resource",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "relatedResource",
+                            "description": "Related resource name",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "fk",
+                            "description": "Related resource id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "body",
+                            "name": "Session",
+                            "description": "Session instance data",
+                            "dataType": "github.com.solher.zest.domain.Session",
+                            "type": "github.com.solher.zest.domain.Session",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 201,
+                            "message": "",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Session"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "DELETE",
+                    "nickname": "DeleteByIDRelated",
+                    "type": "",
+                    "items": {},
+                    "summary": "Delete a Session instance of a related resource",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Session id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "relatedResource",
+                            "description": "Related resource name",
+                            "dataType": "string",
+                            "type": "string",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "fk",
+                            "description": "Related resource id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 204,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "github.com.solher.zest.domain.Account": {
+            "id": "github.com.solher.zest.domain.Account",
+            "properties": {
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "roleMappings": {
+                    "type": "array",
+                    "description": "",
+                    "items": {
+                        "$ref": "github.com.solher.zest.domain.RoleMapping"
+                    },
+                    "format": ""
+                },
+                "sessions": {
+                    "type": "array",
+                    "description": "",
+                    "items": {
+                        "$ref": "github.com.solher.zest.domain.Session"
+                    },
+                    "format": ""
+                },
+                "updatedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "users": {
+                    "type": "array",
+                    "description": "",
+                    "items": {
+                        "$ref": "github.com.solher.zest.domain.User"
+                    },
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.domain.Acl": {
+            "id": "github.com.solher.zest.domain.Acl",
+            "properties": {
+                "aclMappings": {
+                    "type": "array",
+                    "description": "",
+                    "items": {
+                        "$ref": "AclMapping"
+                    },
+                    "format": ""
+                },
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "method": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "resource": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "updatedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.domain.AclMapping": {
+            "id": "github.com.solher.zest.domain.AclMapping",
+            "properties": {
+                "acl": {
+                    "type": "github.com.solher.zest.domain.Acl",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "aclId": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "role": {
+                    "type": "Role",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "roleId": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "updatedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.domain.Role": {
+            "id": "github.com.solher.zest.domain.Role",
+            "properties": {
+                "aclMappings": {
+                    "type": "array",
+                    "description": "",
+                    "items": {
+                        "$ref": "github.com.solher.zest.domain.AclMapping"
+                    },
+                    "format": ""
+                },
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "name": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "roleMappings": {
+                    "type": "array",
+                    "description": "",
+                    "items": {
+                        "$ref": "RoleMapping"
+                    },
+                    "format": ""
+                },
+                "updatedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.domain.RoleMapping": {
+            "id": "github.com.solher.zest.domain.RoleMapping",
+            "properties": {
+                "account": {
+                    "type": "Account",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "accountId": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "role": {
+                    "type": "github.com.solher.zest.domain.Role",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "roleId": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "updatedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.domain.Session": {
+            "id": "github.com.solher.zest.domain.Session",
+            "properties": {
+                "account": {
+                    "type": "github.com.solher.zest.domain.Account",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "accountId": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "agent": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "authToken": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "deletedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "ip": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "updatedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "validTo": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.domain.User": {
+            "id": "github.com.solher.zest.domain.User",
+            "properties": {
+                "account": {
+                    "type": "Account",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "accountId": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "email": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "firstName": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "int",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "lastName": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "password": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "updatedAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "apis": [
+        {
+            "path": "/roleMappings",
+            "description": "RoleMapping resource"
+        },
+        {
+            "path": "/sessions",
+            "description": "Session resource"
+        },
+        {
+            "path": "/users",
+            "description": "User resource"
+        },
+        {
+            "path": "/aclMappings",
+            "description": "AclMapping resource"
+        },
+        {
+            "path": "/roles",
+            "description": "Role resource"
+        },
+        {
+            "path": "/acls",
+            "description": "Acl resource"
+        },
+        {
+            "path": "/accounts",
+            "description": "Account resource"
+        },
+        {
+            "path": "/urls",
+            "description": "Url resource"
+        }
+    ],
+    "info": {
+        "title": "WUS",
+        "description": "WID URL Shortener"
+    }
+}
