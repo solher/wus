@@ -1,0 +1,83 @@
+{
+	"ImportPath": "github.com/solher/wus",
+	"GoVersion": "go1.4.2",
+	"Deps": [
+		{
+			"ImportPath": "github.com/codegangsta/inject",
+			"Comment": "v1.0-rc1-10-g33e0aa1",
+			"Rev": "33e0aa1cb7c019ccc3fbe049a8262a6403d30504"
+		},
+		{
+			"ImportPath": "github.com/codegangsta/negroni",
+			"Comment": "v0.1-70-gc7477ad",
+			"Rev": "c7477ad8e330bef55bf1ebe300cf8aa67c492d1b"
+		},
+		{
+			"ImportPath": "github.com/dimfeld/httppath",
+			"Rev": "c8e499c3ef3c3e272ed8bdcc1ccf39f73c88debc"
+		},
+		{
+			"ImportPath": "github.com/dimfeld/httptreemux",
+			"Comment": "1.1.1-1-g43a8ee9",
+			"Rev": "43a8ee9baf43c37db79623d5a1c1a8829cceb57c"
+		},
+		{
+			"ImportPath": "github.com/gorilla/context",
+			"Rev": "215affda49addc4c8ef7e2534915df2c8c35c6cd"
+		},
+		{
+			"ImportPath": "github.com/hashicorp/golang-lru",
+			"Rev": "995efda3e073b6946b175ed93901d729ad47466a"
+		},
+		{
+			"ImportPath": "github.com/jinzhu/gorm",
+			"Rev": "5663048f137b961f9b1bac6a10227096aa36b0bf"
+		},
+		{
+			"ImportPath": "github.com/lib/pq",
+			"Comment": "go1.0-cutoff-56-gdc50b6a",
+			"Rev": "dc50b6ad2d3ee836442cf3389009c7cd1e64bb43"
+		},
+		{
+			"ImportPath": "github.com/mattn/go-sqlite3",
+			"Rev": "b4142c444a8941d0d92b0b7103a24df9cd815e42"
+		},
+		{
+			"ImportPath": "github.com/rif/cache2go",
+			"Rev": "299c904a9e61154bed268c97c321b924498cbead"
+		},
+		{
+			"ImportPath": "github.com/rs/cors",
+			"Rev": "5e4ce6bc0ecd3472f6f943666d84876691be2ced"
+		},
+		{
+			"ImportPath": "github.com/solher/swagger/generator",
+			"Rev": "bfaa8e2310ed396b55e673c40b39f4c6d8dd0212"
+		},
+		{
+			"ImportPath": "github.com/solher/swagger/markup",
+			"Rev": "bfaa8e2310ed396b55e673c40b39f4c6d8dd0212"
+		},
+		{
+			"ImportPath": "github.com/solher/swagger/parser",
+			"Rev": "bfaa8e2310ed396b55e673c40b39f4c6d8dd0212"
+		},
+		{
+			"ImportPath": "github.com/solher/zest",
+			"Comment": "v0.1.0-20-g1a61075",
+			"Rev": "1a61075f63ff680e8809cd548478d37b8a32d336"
+		},
+		{
+			"ImportPath": "github.com/unrolled/render",
+			"Rev": "d4edd394101358a4f8e462c43f884d9af99a4d30"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/bcrypt",
+			"Rev": "cc04154d65fb9296747569b107cfd05380b1ea3e"
+		},
+		{
+			"ImportPath": "golang.org/x/crypto/blowfish",
+			"Rev": "cc04154d65fb9296747569b107cfd05380b1ea3e"
+		}
+	]
+}
