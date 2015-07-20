@@ -641,7 +641,7 @@
     </object>
     <object type="LMREQUEST" id="z153">
         <attribute name="uuid" type="string">7979699D-F099-40F6-A1C9-278305F345DE</attribute>
-        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/explorer\\/"]</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/gropd"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
