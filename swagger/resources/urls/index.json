@@ -979,7 +979,7 @@
             "id": "github.com.solher.zest.domain.Session",
             "properties": {
                 "account": {
-                    "type": "github.com.solher.zest.domain.Account",
+                    "type": "Account",
                     "description": "",
                     "items": {},
                     "format": ""
@@ -1044,7 +1044,7 @@
             "id": "github.com.solher.zest.domain.User",
             "properties": {
                 "account": {
-                    "type": "Account",
+                    "type": "github.com.solher.zest.domain.Account",
                     "description": "",
                     "items": {},
                     "format": ""

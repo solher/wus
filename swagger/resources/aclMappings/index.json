@@ -706,7 +706,7 @@
                     "type": "array",
                     "description": "",
                     "items": {
-                        "$ref": "AclMapping"
+                        "$ref": "github.com.solher.zest.domain.AclMapping"
                     },
                     "format": ""
                 },
@@ -796,7 +796,7 @@
                     "type": "array",
                     "description": "",
                     "items": {
-                        "$ref": "github.com.solher.zest.domain.AclMapping"
+                        "$ref": "AclMapping"
                     },
                     "format": ""
                 },
