@@ -51,10 +51,6 @@
 			"Rev": "5e4ce6bc0ecd3472f6f943666d84876691be2ced"
 		},
 		{
-			"ImportPath": "github.com/solher/swagger/generator",
-			"Rev": "bfaa8e2310ed396b55e673c40b39f4c6d8dd0212"
-		},
-		{
 			"ImportPath": "github.com/solher/swagger/markup",
 			"Rev": "bfaa8e2310ed396b55e673c40b39f4c6d8dd0212"
 		},
@@ -64,12 +60,16 @@
 		},
 		{
 			"ImportPath": "github.com/solher/zest",
-			"Comment": "v0.1.0-20-g1a61075",
-			"Rev": "1a61075f63ff680e8809cd548478d37b8a32d336"
+			"Comment": "v0.1.0-22-g5b87d42",
+			"Rev": "5b87d4293db46a52495fd106ad6924ee33531597"
 		},
 		{
 			"ImportPath": "github.com/unrolled/render",
 			"Rev": "d4edd394101358a4f8e462c43f884d9af99a4d30"
+		},
+		{
+			"ImportPath": "github.com/yvasiyarov/swagger/generator",
+			"Rev": "d76499feed85656dbc2d32946088703175288562"
 		},
 		{
 			"ImportPath": "golang.org/x/crypto/bcrypt",
