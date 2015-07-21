@@ -7,14 +7,6 @@
             "description": "Acl resource"
         },
         {
-            "path": "/accounts",
-            "description": "Account resource"
-        },
-        {
-            "path": "/aclMappings",
-            "description": "AclMapping resource"
-        },
-        {
             "path": "/users",
             "description": "User resource"
         },
@@ -23,12 +15,20 @@
             "description": "Role resource"
         },
         {
-            "path": "/sessions",
-            "description": "Session resource"
+            "path": "/aclMappings",
+            "description": "AclMapping resource"
+        },
+        {
+            "path": "/accounts",
+            "description": "Account resource"
         },
         {
             "path": "/roleMappings",
             "description": "RoleMapping resource"
+        },
+        {
+            "path": "/sessions",
+            "description": "Session resource"
         },
         {
             "path": "/urls",
