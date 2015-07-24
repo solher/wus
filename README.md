@@ -11,10 +11,6 @@ Create/migrate/seed the database (SQLite is default if the environment variable 
 
     ./wus resetDB
 
-Generate the Swagger documentation:
-
-    ./wus generateDoc
-
 Run the app (on `localhost:3000` by default):
 
     ./wus
@@ -23,7 +19,7 @@ Enjoy the server freshly created.
 
 ## API documentation
 
-The Swagger API documentation is available on `/explorer`.
+The Swagger API documentation is available on `/api/explorer`.
 
 ## Documentation
 
