@@ -96,6 +96,27 @@
             ]
         },
         {
+            "path": "/accounts/current",
+            "description": "Return the account associated with the current session",
+            "operations": [
+                {
+                    "httpMethod": "GET",
+                    "nickname": "Current",
+                    "type": "github.com.solher.zest.domain.Account",
+                    "items": {},
+                    "summary": "Return the account associated with the current session",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.Account"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "path": "/accounts",
             "description": "Create one or multiple Account instances",
             "operations": [

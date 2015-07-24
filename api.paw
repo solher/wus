@@ -10,7 +10,7 @@
             <plist version="1.0">
                 <dict>
                     <key>NSPersistenceFrameworkVersion</key>
-                    <integer>626</integer>
+                    <integer>630</integer>
                     <key>NSStoreModelVersionHashes</key>
                     <dict>
                         <key>LMCookieJar</key>
@@ -85,7 +85,7 @@
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">POST</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">["{\\n  \\"email\\":\\"admin@wid.la\\",\\n  \\"password\\":\\"admin\\"\\n}"]</attribute>
+        <attribute name="body" type="string">["{\\n  \\"email\\":\\"fabien.herfray@me.com\\",\\n  \\"password\\":\\"qwertyuiop\\"\\n}"]</attribute>
         <attribute name="order" type="int64">0</attribute>
         <attribute name="name" type="string">Signin</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z136"></relationship>
@@ -371,14 +371,14 @@
     </object>
     <object type="LMREQUEST" id="z131">
         <attribute name="uuid" type="string">7F6389E5-B95B-4BD3-9994-9BFF3B25BD1F</attribute>
-        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/api\\/users"]</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/api\\/accounts\\/me\\/users\\/2"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
         <attribute name="redirectauthorization" type="bool">0</attribute>
         <attribute name="method" type="string">PUT</attribute>
         <attribute name="followredirects" type="bool">0</attribute>
-        <attribute name="body" type="string">["[\\n{\\n  \\"firstName\\": \\"Pascal\\",\\n  \\"lastName\\": \\"Vincent\\"\\n},\\n{\\n  \\"id\\": 2,\\n  \\"firstName\\": \\"Fabienne\\"\\n}\\n]"]</attribute>
+        <attribute name="body" type="string">["{\\n  \\"firstName\\": \\"Toto\\",\\n  \\"lastName\\": \\"Titi\\",\\n  \\"password\\": \\"qwerty\\",\\n  \\"email\\": \\"fabien.herfray@me.com\\"\\n}"]</attribute>
         <attribute name="order" type="int64">3</attribute>
         <attribute name="name" type="string">Upsert</attribute>
         <relationship name="parent" type="0/1" destination="LMREQUESTTREEITEM" idrefs="z120"></relationship>
@@ -387,7 +387,7 @@
     </object>
     <object type="LMREQUEST" id="z132">
         <attribute name="uuid" type="string">894048B7-18D6-4832-86FA-EE35F5BF824A</attribute>
-        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/api\\/accounts\\/me?filter={\\"include\\":[\\"sessions\\", \\"users\\"]}"]</attribute>
+        <attribute name="url" type="string">["http:\\/\\/",{"data":{"environmentVariable":"A5F7BDCE-D0C9-4F30-B5A3-1028E0846645"},"identifier":"com.luckymarmot.EnvironmentVariableDynamicValue"},"\\/api\\/accounts\\/current"]</attribute>
         <attribute name="storecookies" type="bool">1</attribute>
         <attribute name="sendcookies" type="bool">1</attribute>
         <attribute name="redirectmethod" type="bool">0</attribute>
