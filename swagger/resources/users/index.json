@@ -5,6 +5,41 @@
     "resourcePath": "/users",
     "apis": [
         {
+            "path": "/users/",
+            "description": "Update the user password",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "UpdatePassword",
+                    "type": "github.com.solher.zest.domain.User",
+                    "items": {},
+                    "summary": "Update the user password",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "PasswordForm",
+                            "description": "The old and the new password",
+                            "dataType": "github.com.solher.zest.resources.PasswordForm",
+                            "type": "github.com.solher.zest.resources.PasswordForm",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.User"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "path": "/users",
             "description": "Create one or multiple User instances",
             "operations": [
@@ -174,7 +209,7 @@
                 {
                     "httpMethod": "PUT",
                     "nickname": "UpdateByID",
-                    "type": "",
+                    "type": "github.com.solher.zest.domain.User",
                     "items": {},
                     "summary": "Update attributes of a User instance",
                     "parameters": [
@@ -205,7 +240,7 @@
                     ],
                     "responseMessages": [
                         {
-                            "code": 201,
+                            "code": 200,
                             "message": "",
                             "responseType": "object",
                             "responseModel": "github.com.solher.zest.domain.User"
@@ -999,6 +1034,23 @@
                 },
                 "updatedAt": {
                     "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.resources.PasswordForm": {
+            "id": "github.com.solher.zest.resources.PasswordForm",
+            "properties": {
+                "newPassword": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "oldPassword": {
+                    "type": "string",
                     "description": "",
                     "items": {},
                     "format": ""

@@ -96,7 +96,7 @@
             ]
         },
         {
-            "path": "/accounts/current",
+            "path": "/accounts/me",
             "description": "Return the account associated with the current session",
             "operations": [
                 {
@@ -111,6 +111,21 @@
                             "message": "Request was successful",
                             "responseType": "object",
                             "responseModel": "github.com.solher.zest.domain.Account"
+                        }
+                    ]
+                },
+                {
+                    "httpMethod": "DELETE",
+                    "nickname": "DeleteCurrent",
+                    "type": "",
+                    "items": {},
+                    "summary": "Delete the account associated with the current session",
+                    "responseMessages": [
+                        {
+                            "code": 204,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "error"
                         }
                     ]
                 }
