@@ -776,6 +776,65 @@
                     ]
                 }
             ]
+        },
+        {
+            "path": "/accounts/{pk}/users/{fk}/updatePassword",
+            "description": "Update the related user password",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "UpdatePasswordRelated",
+                    "type": "github.com.solher.zest.domain.User",
+                    "items": {},
+                    "summary": "Update the related user password",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "pk",
+                            "description": "Account id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "path",
+                            "name": "fk",
+                            "description": "User id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
+                        {
+                            "paramType": "body",
+                            "name": "PasswordForm",
+                            "description": "The old and the new password",
+                            "dataType": "github.com.solher.zest.resources.PasswordForm",
+                            "type": "github.com.solher.zest.resources.PasswordForm",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "Request was successful",
+                            "responseType": "object",
+                            "responseModel": "github.com.solher.zest.domain.User"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "models": {
@@ -1149,6 +1208,23 @@
                 },
                 "rememberMe": {
                     "type": "bool",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.solher.zest.resources.PasswordForm": {
+            "id": "github.com.solher.zest.resources.PasswordForm",
+            "properties": {
+                "newPassword": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "oldPassword": {
+                    "type": "string",
                     "description": "",
                     "items": {},
                     "format": ""

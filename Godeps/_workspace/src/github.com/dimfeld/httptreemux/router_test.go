@@ -446,6 +446,7 @@ func TestRoot(t *testing.T) {
 func TestWildcardAtSplitNode(t *testing.T) {
 	var suppliedParam string
 	simpleHandler := func(w http.ResponseWriter, r *http.Request, params map[string]string) {
+		t.Log(params)
 		suppliedParam, _ = params["slug"]
 	}
 
@@ -454,6 +455,8 @@ func TestWildcardAtSplitNode(t *testing.T) {
 	router.GET("/passing", simpleHandler)
 	router.GET("/:slug", simpleHandler)
 	router.GET("/:slug/abc", simpleHandler)
+
+	t.Log(router.root.dumpTree("", " "))
 
 	r, _ := newRequest("GET", "/patch", nil)
 	w := httptest.NewRecorder()
@@ -549,6 +552,44 @@ func TestQueryString(t *testing.T) {
 		if param != "bbb" {
 			t.Error("Expected wildcard to match bbb, saw", param)
 		}
+	}
+}
+
+func TestPathSource(t *testing.T) {
+	var called string
+
+	appleHandler := func(w http.ResponseWriter, r *http.Request, params map[string]string) {
+		called = "apples"
+	}
+
+	bananaHandler := func(w http.ResponseWriter, r *http.Request, params map[string]string) {
+		called = "bananas"
+	}
+	router := New()
+	router.GET("/apples", appleHandler)
+	router.GET("/bananas", bananaHandler)
+
+	// Set up a request with different values in URL and RequestURI.
+	r, _ := newRequest("GET", "/apples", nil)
+	r.RequestURI = "/bananas"
+	w := new(mockResponseWriter)
+
+	// Default setting should be RequestURI
+	router.ServeHTTP(w, r)
+	if called != "bananas" {
+		t.Error("Using default, expected bananas but saw", called)
+	}
+
+	router.PathSource = URLPath
+	router.ServeHTTP(w, r)
+	if called != "apples" {
+		t.Error("Using URLPath, expected apples but saw", called)
+	}
+
+	router.PathSource = RequestURI
+	router.ServeHTTP(w, r)
+	if called != "bananas" {
+		t.Error("Using RequestURI, expected bananas but saw", called)
 	}
 }
 

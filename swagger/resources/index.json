@@ -3,6 +3,22 @@
     "swaggerVersion": "1.2",
     "apis": [
         {
+            "path": "/roles",
+            "description": "Role resource"
+        },
+        {
+            "path": "/accounts",
+            "description": "Account resource"
+        },
+        {
+            "path": "/sessions",
+            "description": "Session resource"
+        },
+        {
+            "path": "/roleMappings",
+            "description": "RoleMapping resource"
+        },
+        {
             "path": "/users",
             "description": "User resource"
         },
@@ -11,24 +27,8 @@
             "description": "AclMapping resource"
         },
         {
-            "path": "/roles",
-            "description": "Role resource"
-        },
-        {
-            "path": "/sessions",
-            "description": "Session resource"
-        },
-        {
             "path": "/acls",
             "description": "Acl resource"
-        },
-        {
-            "path": "/roleMappings",
-            "description": "RoleMapping resource"
-        },
-        {
-            "path": "/accounts",
-            "description": "Account resource"
         },
         {
             "path": "/urls",

@@ -33,11 +33,16 @@ type PanicHandler func(http.ResponseWriter, *http.Request, interface{})
 // Finally, the UseHandler value will simply call the handler function for the pattern.
 type RedirectBehavior int
 
+type PathSource int
+
 const (
 	Redirect301 RedirectBehavior = iota // Return 301 Moved Permanently
 	Redirect307                         // Return 307 HTTP/1.1 Temporary Redirect
 	Redirect308                         // Return a 308 RFC7538 Permanent Redirect
 	UseHandler                          // Just call the handler function
+
+	RequestURI PathSource = iota // Use r.RequestURI
+	URLPath                      // Use r.URL.Path
 )
 
 type TreeMux struct {
@@ -81,6 +86,16 @@ type TreeMux struct {
 	// RedirectMethodBehavior overrides the default behavior for a particular HTTP method.
 	// The key is the method name, and the value is the behavior to use for that method.
 	RedirectMethodBehavior map[string]RedirectBehavior
+
+	// PathSource determines from where the router gets its path to search.
+	// By default it pulls the data from the RequestURI member, but this can
+	// be overridden to use URL.Path instead.
+	//
+	// There is a small tradeoff here. Using RequestURI allows the router to handle
+	// encoded slashes (i.e. %2f) in the URL properly, while URL.Path provides
+	// better compatibility with some utility functions in the http
+	// library that modify the Request before passing it to the router.
+	PathSource PathSource
 }
 
 // Dump returns a text representation of the routing tree.
@@ -161,7 +176,7 @@ func (t *TreeMux) Handle(method, path string, handler HandlerFunc) {
 		path = path[:len(path)-1]
 	}
 
-	node := t.root.addPath(path[1:])
+	node := t.root.addPath(path[1:], nil)
 	if addSlash {
 		node.addSlash = true
 	}
@@ -239,7 +254,7 @@ func (t *TreeMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	path := r.RequestURI
 	pathLen := len(path)
-	if pathLen > 0 {
+	if pathLen > 0 && t.PathSource == RequestURI {
 		rawQueryLen := len(r.URL.RawQuery)
 
 		if rawQueryLen != 0 || path[pathLen-1] == '?' {
@@ -258,15 +273,13 @@ func (t *TreeMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	if trailingSlash && t.RedirectTrailingSlash {
 		path = path[:pathLen-1]
 	}
-	// params := make(map[string]string)
-	var params map[string]string
-	n := t.root.search(path[1:], &params)
+	n, params := t.root.search(path[1:])
 	if n == nil {
 		if t.RedirectCleanPath {
 			// Path was not found. Try cleaning it up and search again.
 			// TODO Test this
 			cleanPath := httppath.Clean(path)
-			n = t.root.search(cleanPath[1:], &params)
+			n, params = t.root.search(cleanPath[1:])
 			if n == nil {
 				// Still nothing found.
 				t.NotFoundHandler(w, r)
@@ -312,7 +325,22 @@ func (t *TreeMux) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	handler(w, r, params)
+	var paramMap map[string]string
+	if len(params) != 0 {
+		if len(params) != len(n.leafWildcardNames) {
+			// Need better behavior here. Should this be a panic?
+			panic(fmt.Sprintf("httptreemux parameter list length mismatch: %v, %v",
+				params, n.leafWildcardNames))
+		}
+
+		paramMap = make(map[string]string)
+		numParams := len(params)
+		for index := 0; index < numParams; index++ {
+			paramMap[n.leafWildcardNames[numParams-index-1]] = params[index]
+		}
+	}
+
+	handler(w, r, paramMap)
 }
 
 // MethodNotAllowedHandler is the default handler for TreeMux.MethodNotAllowedHandler,
@@ -338,5 +366,6 @@ func New() *TreeMux {
 		RedirectCleanPath:       true,
 		RedirectBehavior:        Redirect301,
 		RedirectMethodBehavior:  make(map[string]RedirectBehavior),
+		PathSource:              RequestURI,
 	}
 }

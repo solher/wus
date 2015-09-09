@@ -17,16 +17,17 @@ func init() {
 
 type AccountGuestInter struct {
 	repo                 AbstractAccountRepo
+	accountInter         AbstractAccountInter
 	userInter            AbstractUserInter
 	sessionInter         AbstractSessionInter
 	sessionCacheInter    usecases.AbstractSessionCacheInter
 	permissionCacheInter usecases.AbstractPermissionCacheInter
 }
 
-func NewAccountGuestInter(repo AbstractAccountRepo, userInter AbstractUserInter, sessionInter AbstractSessionInter,
+func NewAccountGuestInter(repo AbstractAccountRepo, userInter AbstractUserInter, accountInter AbstractAccountInter, sessionInter AbstractSessionInter,
 	sessionCacheInter *usecases.SessionCacheInter, permissionCacheInter *usecases.PermissionCacheInter) *AccountGuestInter {
 
-	return &AccountGuestInter{repo: repo, userInter: userInter, sessionInter: sessionInter,
+	return &AccountGuestInter{repo: repo, accountInter: accountInter, userInter: userInter, sessionInter: sessionInter,
 		sessionCacheInter: sessionCacheInter, permissionCacheInter: permissionCacheInter}
 }
 
@@ -113,6 +114,36 @@ func (i *AccountGuestInter) Signup(user *domain.User) (*domain.Account, error) {
 	account.Users = []domain.User{*user}
 
 	return account, nil
+}
+
+func (i *AccountGuestInter) Current(currentSession *domain.Session) (*domain.Account, error) {
+	filter := &usecases.Filter{
+		Include: []interface{}{"users"},
+	}
+
+	account, err := i.repo.FindByID(currentSession.AccountID, usecases.QueryContext{Filter: filter})
+	if err != nil {
+		return nil, err
+	}
+
+	currentSession.Account = domain.Account{}
+	account.Sessions = []domain.Session{*currentSession}
+
+	return account, nil
+}
+
+func (i *AccountGuestInter) DeleteCurrent(currentSession *domain.Session) error {
+	account, err := i.Current(currentSession)
+	if err != nil {
+		return err
+	}
+
+	err = i.accountInter.DeleteByID(account.ID, usecases.QueryContext{})
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (i *AccountGuestInter) CurrentSessionFromToken(authToken string) (*domain.Session, error) {

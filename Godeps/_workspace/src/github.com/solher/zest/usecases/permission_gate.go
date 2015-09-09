@@ -43,7 +43,7 @@ func (p *PermissionGate) Handler(w http.ResponseWriter, r *http.Request, params 
 	}
 
 	if len(roleNames) == 1 && roleNames[0] == "Owner" {
-		if context.Get(r, "lastResource") == nil && (p.method == "Create" || p.method == "Upsert") {
+		if context.Get(r, "lastResource") == nil && (p.method == "Create" || p.method == "Upsert" || p.method == "UpdateByID") {
 			p.render.JSONError(w, http.StatusUnauthorized, apierrors.Unauthorized, internalerrors.NotFound)
 			return
 		}
@@ -54,6 +54,7 @@ func (p *PermissionGate) Handler(w http.ResponseWriter, r *http.Request, params 
 
 	context.Set(r, "method", p.method)
 	context.Set(r, "resource", p.resource)
+	context.Set(r, "roles", roleNames)
 
 	p.next(w, r, params)
 }

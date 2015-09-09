@@ -5,7 +5,7 @@
     "resourcePath": "/users",
     "apis": [
         {
-            "path": "/users/",
+            "path": "/users/{id}/updatePassword",
             "description": "Update the user password",
             "operations": [
                 {
@@ -15,6 +15,18 @@
                     "items": {},
                     "summary": "Update the user password",
                     "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "description": "User id",
+                            "dataType": "int",
+                            "type": "int",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        },
                         {
                             "paramType": "body",
                             "name": "PasswordForm",
